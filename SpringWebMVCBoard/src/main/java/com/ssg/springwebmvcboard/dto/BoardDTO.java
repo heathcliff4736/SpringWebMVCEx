@@ -28,6 +28,8 @@ public class BoardDTO {
     private Long likecount;      // 좋아요 수
     private String filePath;    // 업로드 파일 경로
     private String originalName;// 업로드 파일 원본 이름
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime created_At; // 생성일
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime updated_At; // 수정일
 }

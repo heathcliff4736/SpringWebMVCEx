@@ -31,5 +31,6 @@ public class BoardVO {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime created_At; // 생성일
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime updated_At; // 수정일
 }
