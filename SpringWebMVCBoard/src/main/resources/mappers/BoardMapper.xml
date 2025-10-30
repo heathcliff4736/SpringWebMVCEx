@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--URI 처리-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssg.springwebmvcboard.mapper.BoardMapper">
+
+    <insert id="insert" >
+        INSERT INTO springexdb.tbl_board (
+        title,
+        content,
+        writer,
+        passphrase,
+        file_path,
+        original_name
+        ) VALUES (
+        #{title},
+        #{content},
+        #{writer},
+        #{passphrase},
+        #{filePath, jdbcType=VARCHAR},
+        #{originalName, jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <select id="selectAll" resultType="com.ssg.springwebmvcboard.domain.BoardVO">
+        SELECT *
+        FROM tbl_board
+        ORDER BY board_id DESC
+    </select>
+
+    <select id="selectOne" resultType="com.ssg.springwebmvcboard.domain.BoardVO">
+        SELECT *
+        FROM tbl_board
+        WHERE board_id = #{board_Id}
+    </select>
+
+    <delete id="delete">
+        DELETE FROM tbl_board
+        WHERE board_id = #{board_Id}
+    </delete>
+
+    <update id="update">
+        UPDATE tbl_board SET
+        title = #{title},
+        content = #{content},
+        file_path = #{filePath},
+        original_name = #{originalName}
+        WHERE board_id = #{board_Id}
+    </update>
+
+    <update id="viewCountUpdate">
+        UPDATE tbl_board SET
+        viewcount = viewcount + 1
+        WHERE board_id = #{board_Id}
+    </update>
+
+</mapper>
